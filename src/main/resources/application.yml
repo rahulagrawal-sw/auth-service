@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: auth-service
+
+server:
+  port: 8000
+
+management:
+  endpoints:
+    web:
+      base-path:  /manage
+      exposure:
+        include: '*'
+
+
+logging:
+  level:
+    org:
+      springframework:
+        web:  TRACE
+      web: DEBUG
+
+# Eureka
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+#eureka.client.service-url.defaultZone=http://service-registry:8761/eureka/
+
+#Feign and Ribbon Timeouts
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 50000
+        readTimeout:  50000
+ribbon:
+  ConnectTimeout: 60000
+  ReadTimeout: 60000
+
+
+
